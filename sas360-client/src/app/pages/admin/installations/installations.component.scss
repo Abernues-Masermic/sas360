@@ -1,0 +1,29 @@
+@import 'variables';
+@import 'styles';
+
+table{
+  width:98%;
+  margin: 0 auto;
+  margin-top: 1rem;
+}
+
+th.mat-sort-header-sorted{
+  color:$white;
+}
+
+.horizontal-spacer {
+  align-items: center;
+  display: flex;
+
+  button {
+    width: 20%;
+  }
+  h1{
+    @extend %subtitle-style;
+  }
+}
+
+.custom-button-class{
+  @extend %custom-button;
+}
+

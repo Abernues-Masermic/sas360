@@ -1,0 +1,260 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AppComponent debe hacer match con el snapshot 1`] = `
+<div
+  id="root2"
+>
+  <mat-sidenav-container
+    class="mat-drawer-container mat-sidenav-container"
+  >
+    <div
+      class="mat-drawer-backdrop"
+    />
+    
+    <div
+      aria-hidden="true"
+      class="cdk-visually-hidden cdk-focus-trap-anchor"
+    />
+    <mat-sidenav
+      class="mat-drawer mat-sidenav ng-trigger ng-trigger-transform mat-drawer-side"
+      mode="side"
+      style="box-shadow:none;visibility:hidden;0:box-shadow;1:visibility;"
+      tabindex="-1"
+    >
+      <div
+        cdkscrollable=""
+        class="mat-drawer-inner-container"
+      >
+        <mat-toolbar
+          class="mat-toolbar mat-primary mat-toolbar-single-row"
+          color="primary"
+        >
+          ADMIN
+        </mat-toolbar>
+        <app-sidebar>
+          <div
+            class="vertical-spacer"
+          />
+          <mat-nav-list
+            class="mat-nav-list mat-list-base"
+            role="navigation"
+          >
+            <a
+              class="mat-list-item mat-focus-indicator"
+              href="/admin"
+              mat-list-item=""
+              routerlink="/admin"
+            >
+              <span
+                class="mat-list-item-content"
+              >
+                <span
+                  class="mat-ripple mat-list-item-ripple"
+                  mat-ripple=""
+                />
+                <span
+                  class="mat-list-text"
+                />
+                <mat-icon
+                  aria-hidden="true"
+                  class="mat-icon notranslate white-icon material-icons mat-icon-no-color"
+                  data-mat-icon-type="font"
+                  role="img"
+                >
+                  insert_chart_outlined
+                </mat-icon>
+                <span
+                  class="nav-link"
+                >
+                  Dashboard
+                </span>
+              </span>
+            </a>
+            <a
+              class="mat-list-item mat-focus-indicator"
+              href="/admin/users"
+              mat-list-item=""
+              routerlink="/admin/users"
+            >
+              <span
+                class="mat-list-item-content"
+              >
+                <span
+                  class="mat-ripple mat-list-item-ripple"
+                  mat-ripple=""
+                />
+                <span
+                  class="mat-list-text"
+                />
+                <mat-icon
+                  aria-hidden="true"
+                  class="mat-icon notranslate white-icon material-icons mat-icon-no-color"
+                  data-mat-icon-type="font"
+                  role="img"
+                >
+                  people
+                </mat-icon>
+                <span
+                  class="nav-link"
+                >
+                  Users
+                </span>
+              </span>
+            </a>
+            <a
+              class="mat-list-item mat-focus-indicator"
+              href="/admin/devices"
+              mat-list-item=""
+              routerlink="/admin/devices"
+            >
+              <span
+                class="mat-list-item-content"
+              >
+                <span
+                  class="mat-ripple mat-list-item-ripple"
+                  mat-ripple=""
+                />
+                <span
+                  class="mat-list-text"
+                />
+                <mat-icon
+                  aria-hidden="true"
+                  class="mat-icon notranslate white-icon material-icons mat-icon-no-color"
+                  data-mat-icon-type="font"
+                  role="img"
+                >
+                  settings_overscan
+                </mat-icon>
+                <span
+                  class="nav-link"
+                >
+                  Devices
+                </span>
+              </span>
+            </a>
+            <a
+              class="mat-list-item mat-focus-indicator"
+              href="/admin/events"
+              mat-list-item=""
+              routerlink="/admin/events"
+            >
+              <span
+                class="mat-list-item-content"
+              >
+                <span
+                  class="mat-ripple mat-list-item-ripple"
+                  mat-ripple=""
+                />
+                <span
+                  class="mat-list-text"
+                />
+                <mat-icon
+                  aria-hidden="true"
+                  class="mat-icon notranslate white-icon material-icons mat-icon-no-color"
+                  data-mat-icon-type="font"
+                  role="img"
+                >
+                  settings_overscan
+                </mat-icon>
+                <span
+                  class="nav-link"
+                >
+                  Events
+                </span>
+              </span>
+            </a>
+            <a
+              class="mat-list-item mat-focus-indicator"
+              mat-list-item=""
+            >
+              <span
+                class="mat-list-item-content"
+              >
+                <span
+                  class="mat-ripple mat-list-item-ripple"
+                  mat-ripple=""
+                />
+                <span
+                  class="mat-list-text"
+                />
+                <mat-icon
+                  aria-hidden="true"
+                  class="mat-icon notranslate white-icon material-icons mat-icon-no-color"
+                  data-mat-icon-type="font"
+                  role="img"
+                >
+                  exit_to_app
+                </mat-icon>
+                <span
+                  class="nav-link"
+                >
+                  Exit
+                </span>
+              </span>
+            </a>
+          </mat-nav-list>
+        </app-sidebar>
+      </div>
+    </mat-sidenav>
+    <div
+      aria-hidden="true"
+      class="cdk-visually-hidden cdk-focus-trap-anchor"
+    />
+    <mat-sidenav-content
+      class="mat-drawer-content mat-sidenav-content"
+    >
+      <app-header>
+        <mat-toolbar
+          class="mat-toolbar mat-primary mat-toolbar-single-row"
+          color="primary"
+        >
+          
+          <span>
+            SAS360
+          </span>
+          <span
+            class="horizontal-spacer"
+          />
+          <h3>
+            
+          </h3>
+          <a>
+            <a
+              class="customButton"
+              href="/login"
+              routerlink="/login"
+            >
+              Login
+            </a>
+          </a>
+          
+        </mat-toolbar>
+        
+      </app-header>
+      <router-outlet />
+      
+      <app-footer>
+        <footer
+          class="footer"
+        >
+          <div
+            class="content"
+          >
+            <p>
+              Copyright © 2021 Masermic
+            </p>
+            <a
+              href="/about"
+              routerlink="/about"
+            >
+              About
+            </a>
+          </div>
+        </footer>
+      </app-footer>
+    </mat-sidenav-content>
+    
+  </mat-sidenav-container>
+  <hr />
+</div>
+`;

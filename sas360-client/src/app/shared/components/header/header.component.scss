@@ -1,0 +1,33 @@
+@import 'variables';
+@import 'styles';
+
+.mat-toolbar.mat-primary {
+  background: $toolbar-color;
+  color: $white;
+}
+
+.horizontal-spacer{
+  flex: $horizontal-spacer;
+}
+
+h3{
+  text-align: center;
+  font-family: $app-font-family;
+  font-size: $app-font-size;
+  margin-right: $app-margin-right;
+  background-color: $dark-blue;
+  padding-top: $app-padding-top;
+  padding-bottom: $app-padding-bottom;
+  padding-left: $app-padding-left;
+  padding-right: $app-padding-right;
+  border-radius: $border-radious-content;
+  min-width: 250px;
+  min-height: 35px;
+}
+
+.custom-button-class{
+  @extend %custom-button;
+}
+
+
+

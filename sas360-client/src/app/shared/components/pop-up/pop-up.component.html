@@ -1,0 +1,36 @@
+<div class="d-flex justify-content-around">
+  <mat-icon
+    class="icon-display"
+    [style.color]="
+      modalType === 1 ? 'black' : modalType === 2 ? 'red' : 'green'
+    ">
+    {{
+      modalType === 1
+        ? 'info'
+        : modalType === 2
+        ? 'error'
+        : modalType === 3
+        ? 'done'
+        : 'home'
+    }}
+  </mat-icon>
+  <h2 mat-dialog-title>{{ title }}</h2>
+</div>
+
+<mat-dialog-actions
+  [ngStyle]="{ visibility: showActions ? 'visible' : 'hidden' }">
+  <button
+    class="btn btn-primary mx-2"
+    (click)="onAccept()"
+    [mat-dialog-close]="true"
+    ckdFocusInitial>
+    YES
+  </button>
+  <button
+    class="btn btn-primary mx-2"
+    (click)="onCancel()"
+    [mat-dialog-close]="true"
+    ckdFocusInitial>
+    NO
+  </button>
+</mat-dialog-actions>

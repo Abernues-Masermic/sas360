@@ -8,7 +8,8 @@
       "@shared/*": ["src/app/shared/*"],
       "@admin/*": ["src/app/admin/*"],
       "@pages/*": ["src/app/pages/*"],
-      "@auth/*": ["src/app/pages/auth/*"],
+      "@pagesauth/*": ["src/app/pages/auth/*"],
+      "@pagesadmin/*": ["src/app/pages/admin/*"],
       "@env/*": ["src/environments/*"],
     },
     "outDir": "./dist/out-tsc",
@@ -24,12 +25,16 @@
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "es2017",
+    "target": "es2020",
     "module": "es2020",
     "lib": [
       "es2020",
       "dom"
-    ]
+    ],
+    "types": [
+      "jest"
+    ],
+    "esModuleInterop": true
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

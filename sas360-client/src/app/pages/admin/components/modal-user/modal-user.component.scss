@@ -1,0 +1,14 @@
+@import 'variables';
+
+.modal-form{
+  padding:1rem 0;
+
+  .full-width-input{
+    width: 100%;
+  }
+}
+
+h2{
+  font-family: $app-font-family;
+  font-size: $app-font-size-title;
+}

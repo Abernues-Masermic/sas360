@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, Unique } from "typeorm";
 
 @Entity()
-export class Device {
+export class Event {
 
     @PrimaryGeneratedColumn()
     id: number

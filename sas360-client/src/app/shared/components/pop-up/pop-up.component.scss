@@ -1,0 +1,38 @@
+@import 'variables';
+
+.icon-display {
+  transform: scale(2);
+}
+
+.btn-primary, .btn-primary:active, .btn-primary:visited {
+  background-color: #647fa2 !important;
+  border-color: #5bc2c2
+}
+.btn-primary:hover {
+  background-color:  #28467e !important;
+  border-color: #000000
+}
+
+.btn-primary:focus,
+.btn-primary.focus {
+    box-shadow: 0 0 0 .2rem rgba(91, 194, 194, 0.5)
+}
+
+.btn-primary:not(:disabled):not(.disabled):active,
+.btn-primary:not(:disabled):not(.disabled).active,
+.show>.btn-primary.dropdown-toggle {
+    color: #28467e;
+    border-color: #ffffff;
+    background-color:  #647fa2 !important;
+}
+
+button {
+  flex-grow: 1;
+}
+
+h2{
+  font-family: $app-font-family;
+  font-size: $app-font-size;
+}
+
+

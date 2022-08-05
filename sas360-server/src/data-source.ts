@@ -1,6 +1,10 @@
-import "reflect-metadata"
-import { DataSource } from "typeorm"
-import { User } from "./entity/User"
+import "reflect-metadata";
+import { DataSource } from "typeorm";
+import { Data } from "./entity/Data";
+import { Device } from "./entity/Device";
+import { Event } from "./entity/Event";
+import { User } from "./entity/User";
+import { Installation } from "./entity/Installation";
 
 export const AppDataSource = new DataSource({
     type: "mysql",
@@ -11,7 +15,7 @@ export const AppDataSource = new DataSource({
     database: "sas360",
     synchronize: true,
     logging: false,
-    entities: [User],
+    entities: [Data, Device, Event, User, Installation],
     migrations: [],
     subscribers: [],
 })

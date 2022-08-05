@@ -1,0 +1,52 @@
+%subtitle-style{
+  color: $white;
+  background-color: black;
+  width: 100%;
+  font-family: $app-font-family;
+  font-weight: bold;
+  text-align: center;
+  border-bottom:2px solid $dark-blue;
+  border-bottom-style: solid;
+  border-right:2px solid $dark-blue;
+  border-right-style: solid;
+}
+
+
+%custom-button{
+  display:inline-block;
+  padding-top: $app-padding-top;
+  padding-bottom: $app-padding-bottom;
+  padding-left: $app-padding-left;
+  padding-right: $app-padding-right;
+  margin-top: $app-margin-top;
+  margin-bottom: $app-margin-bottom;
+  margin-left: $app-margin-left;
+  margin-right: $app-margin-right;
+  border-radius:$border-radious-content;
+  box-sizing: border-box;
+  text-decoration:none;
+  font-family:$app-font-family;
+  font-size: 1rem;
+  color:$black;
+  background-color:$button-color;
+  text-align:center;
+  transition: all 0.2s;
+  cursor: pointer;
+
+
+  &:hover{
+    background-color:$button-hover-color;
+    color: white;
+    cursor: hand;
+  }
+  &:active {
+    color: orangered;
+  }
+
+  @media all and (max-width:30em){
+    a.customButton{
+    display:block;
+    margin:0.2em auto;
+    }
+  }
+}

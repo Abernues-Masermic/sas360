@@ -1,0 +1,93 @@
+<div class="table-button-row horizontal-spacer">
+  <button
+    (click)="onOpenModalUser()"
+    mat-flat-button
+    color="primary"
+    class="m-3 p-1">
+    Add new
+  </button>
+
+  <h1 class="m-3 p-1">USERS</h1>
+</div>
+
+<table
+  mat-table
+  #table
+  [dataSource]="dataSource"
+  matSort
+  class="mat-elevation-z8">
+  <ng-container matColumnDef="id">
+    <th
+      mat-header-cell
+      *matHeaderCellDef
+      mat-sort-header
+      sortActionDescription="Sort by number">
+      No.
+    </th>
+    <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="username">
+    <th
+      mat-header-cell
+      *matHeaderCellDef
+      mat-sort-header
+      sortActionDescription="sort by username">
+      Username
+    </th>
+    <td mat-cell *matCellDef="let element">{{ element.username }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="role">
+    <th
+      mat-header-cell
+      *matHeaderCellDef
+      mat-sort-header
+      sortActionDescription="Sort by role">
+      Role
+    </th>
+    <td mat-cell *matCellDef="let element">{{ element.role }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="installation">
+    <th
+      mat-header-cell
+      *matHeaderCellDef
+      mat-sort-header
+      sortActionDescription="Sort by installation">
+      Installation
+    </th>
+    <td mat-cell *matCellDef="let element">{{ element.installation }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
+    <td mat-cell *matCellDef="let element; let i = index">
+      <div class="table-button-row">
+        <a
+          class="custom-button-class"
+          (mouseover)="hoveredEdit = i"
+          (mouseout)="hoveredEdit = -1"
+          [ngStyle]="{
+            'background-color': hoveredEdit === i ? 'blue' : 'lightBlue'
+          }"
+          (click)="onOpenModalUser(element)">
+          Edit
+        </a>
+        <a
+          class="custom-button-class"
+          (mouseover)="hoveredDelete = i"
+          (mouseout)="hoveredDelete = -1"
+          [ngStyle]="{
+            'background-color': hoveredDelete === i ? 'red' : 'coral'
+          }"
+          (click)="onDelete(element)">
+          Delete
+        </a>
+      </div>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>

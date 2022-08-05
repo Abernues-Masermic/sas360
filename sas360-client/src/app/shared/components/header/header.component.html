@@ -1,0 +1,19 @@
+<mat-toolbar color="primary">
+  <ng-container *ngIf="userRole === 'ADMIN'">
+    <button mat-icon-button (click)="onToogleSideNav()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </ng-container>
+
+  <span>SAS360</span>
+  <span class="horizontal-spacer"></span>
+
+  <h3>{{ userName }}</h3>
+  <a *ngIf="!isLogged; else viewLogout">
+    <a class="custom-button-class" routerLink="/login">Login</a>
+  </a>
+</mat-toolbar>
+
+<ng-template #viewLogout>
+  <a class="custom-button-class" (click)="onLogout()">Logout</a>
+</ng-template>

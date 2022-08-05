@@ -1,0 +1,31 @@
+==========================================================================
+                   20210155 : DESARROLLO SAS360
+==========================================================================
+                   Microelectr�nica Maser
+                   Kurutz Gain, 20850 Mendaro
+                   Tel.: +34 943 742669, Fax -3770
+
+
+==========================================================================
+IDE				FRAMEWORKS								DATABASE
+Visual code 1.69.2   		@angular/cli 13.2.6      typescript 4.5.5   node v16.13.2  		MYSQL 8.0
+=====================================================================================================================
+
+-------------------------
+
+Version: 1.0
+
+Incidence: Define sas360 client / sas360 server structure. Start developing application API
+
+Proyects / classes:  sas360-client / sas 360-server
+
+
+Detail:  Folder structure, server controllers and routes, client shared components, services
+
+
+Status: Validated
+
+Executed: Ander Bernues 12/07/2022
+Validated: Ander Bernues Alonso 
+-------------------------
+

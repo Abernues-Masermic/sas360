@@ -1,0 +1,20 @@
+
+@import 'variables';
+
+mat-toolbar.mat-primary {
+  background: $nav-color;
+  color: $white;
+}
+
+mat-sidenav{
+  width:200px;
+}
+
+mat-sidenav-content{
+  background-color: $main-color;
+}
+
+mat-sidenav-container{
+  height: 100%;
+}
+

@@ -1,0 +1,82 @@
+<div class="table-button-row horizontal-spacer">
+  <button
+    (click)="onOpenModalInstallation()"
+    mat-flat-button
+    color="primary"
+    class="m-3 p-1">
+    Add new
+  </button>
+
+  <h1 class="m-3 p-1">INSTALLATIONS</h1>
+</div>
+
+<table
+  mat-table
+  #table
+  [dataSource]="dataSource"
+  matSort
+  class="mat-elevation-z8">
+  <ng-container matColumnDef="id">
+    <th
+      mat-header-cell
+      *matHeaderCellDef
+      mat-sort-header
+      sortActionDescription="Sort by number">
+      No.
+    </th>
+    <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="installationname">
+    <th
+      mat-header-cell
+      *matHeaderCellDef
+      mat-sort-header
+      sortActionDescription="sort by installationname">
+      Installation
+    </th>
+    <td mat-cell *matCellDef="let element">{{ element.installationname }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="description">
+    <th
+      mat-header-cell
+      *matHeaderCellDef
+      mat-sort-header
+      sortActionDescription="sort by description">
+      Description
+    </th>
+    <td mat-cell *matCellDef="let element">{{ element.description }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
+    <td mat-cell *matCellDef="let element; let i = index">
+      <div class="table-button-row">
+        <a
+          class="custom-button-class"
+          (mouseover)="hoveredEdit = i"
+          (mouseout)="hoveredEdit = -1"
+          [ngStyle]="{
+            'background-color': hoveredEdit === i ? 'blue' : 'lightBlue'
+          }"
+          (click)="onOpenModalInstallation(element)">
+          Edit
+        </a>
+        <a
+          class="custom-button-class"
+          (mouseover)="hoveredDelete = i"
+          (mouseout)="hoveredDelete = -1"
+          [ngStyle]="{
+            'background-color': hoveredDelete === i ? 'red' : 'coral'
+          }"
+          (click)="onDelete(element)">
+          Delete
+        </a>
+      </div>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>

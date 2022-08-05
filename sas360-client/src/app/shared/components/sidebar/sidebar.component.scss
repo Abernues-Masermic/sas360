@@ -1,0 +1,17 @@
+@import 'variables';
+
+.mat-nav-list{
+  background: $nav-color;
+}
+
+.nav-link{
+  margin-left: $app-margin-left;
+  color:$white;
+}
+.white-icon {
+  color: $white;
+}
+
+.vertical-spacer{
+  border: $vertical-spacer
+}

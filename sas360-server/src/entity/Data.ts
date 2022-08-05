@@ -1,8 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, Unique } from "typeorm";
 
 @Entity()
-@Unique(['devicename'])
-export class Device {
+export class Data {
 
     @PrimaryGeneratedColumn()
     id: number
@@ -18,5 +17,4 @@ export class Device {
 
     @Column()
     installation: string
-
 }
