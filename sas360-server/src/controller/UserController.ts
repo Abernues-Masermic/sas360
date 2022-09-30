@@ -8,6 +8,7 @@ import { hashPassword } from "../middlewares/password-utils";
 class UserController {
 
     static getAll = async (req:Request, res:Response) => {
+        console.log("GET ALL USERS"); 
         const userRepository = AppDataSource.getRepository(User);
         let users: User | any;
         try{
@@ -25,6 +26,7 @@ class UserController {
     }
 
     static getById = async (req:Request, res:Response) => {
+        console.log("GET USER BY ID ->", req.params); 
         const { id } = req.params;
         const userRepository = AppDataSource.getRepository(User);
         try{
@@ -41,6 +43,7 @@ class UserController {
     }
 
     static newUser = async (req:Request, res:Response) => {
+        console.log('NEW USER ->', req.body);
         const  { username, password, role, installation } = req.body;
         const user = new User();
         user.username = username;
@@ -70,9 +73,10 @@ class UserController {
     }
 
     static editUser = async (req:Request, res:Response) => {
+        console.log("EDIT USER ->", req.params, req.body); 
         let user: User;
         const { id } = req.params;
-        const { password, role, installation } = req.body;
+        const { username, password, role, installation } = req.body;
 
         const userRepository = AppDataSource.getRepository(User);
         try{
@@ -81,6 +85,7 @@ class UserController {
                     id: Number(id),
                 },
             });
+            user.username = username;
             user.password = hashPassword(password);
             user.role = role;
             user.installation = installation;
@@ -109,7 +114,7 @@ class UserController {
     }
 
     static deleteUser = async (req:Request, res:Response) => {
-        
+        console.log("DELETE USER ->", req.params); 
         const { id } = req.params;
         const userRepository = AppDataSource.getRepository(User);
         let user: User;

@@ -1,14 +1,54 @@
 <div class="login-form">
   <mat-card>
     <mat-card-content>
-      <form>
+      <h1>LOGIN</h1>
+      <form [formGroup]="baseFormUser.baseForm" (ngSubmit)="onLogin()">
+        <mat-form-field class="full-width-input">
+          <input
+            text=""
+            formControlName="username"
+            matInput
+            placeholder="Username"
+            required />
+
+          <mat-error *ngIf="!checkField('username')">
+            {{ baseFormUser.errorMessage }}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width-input separator">
+          <input
+            [type]="hidePassword ? 'password' : 'text'"
+            formControlName="password"
+            matInput
+            placeholder="Password"
+            required />
+
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="hidePassword = !hidePassword">
+            <mat-icon>
+              {{ hidePassword ? 'visibility_off' : 'visibility' }}
+            </mat-icon>
+          </button>
+
+          <mat-error *ngIf="!checkField('password')">
+            {{ baseFormUser.errorMessage }}
+          </mat-error>
+        </mat-form-field>
+
         <button
           type="submit"
           mat-raised-button
           color="primary"
-          (click)="onLogin()">
+          [disabled]="baseFormUser.baseForm.invalid">
           Login
         </button>
+
+        <h2 style="font-size: 1rem; color: red" *ngIf="isExpired">
+          Accesss token expired. Push refresh token button
+        </h2>
       </form>
     </mat-card-content>
   </mat-card>

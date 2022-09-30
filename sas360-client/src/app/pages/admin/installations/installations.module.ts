@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MaterialModule } from '@shared/material.module';
 
 import { InstallationsRoutingModule } from './installations-routing.module';
 import { InstallationsComponent } from './installations.component';
-import { MaterialModule } from '@shared/material.module';
 
 @NgModule({
   declarations: [InstallationsComponent],

@@ -1,1 +1,102 @@
-<div class="container mx-auto">HOME WORKS!</div>
+<app-spinner></app-spinner>
+
+<div class="home-container">
+  <div class="row" style="margin-top: 0.3rem">
+    <app-geodata-filter
+      [deviceFilterArray]="deviceFilterArray"
+      (deviceFilterEvent)="onDeviceFilterEventHandler($event)"
+      (dateiniFilterEvent)="onDateIniFilterEventHandler($event)"
+      (dateendFilterEvent)="onDateEndFilterEventHandler($event)">
+    </app-geodata-filter>
+  </div>
+
+  <div class="row" style="margin-top: 0.3rem">
+    <div
+      class="geodata-container-table mx-auto my-1"
+      [ngStyle]="geodataContainerStyles">
+      <h1 class="p-1" [ngStyle]="userHeaderStyles">GEO-LOCALIZATION TABLE</h1>
+
+      <div class="mx-auto my-1" *ngIf="geodataItems">
+        <app-geodata-table [geodataItems]="geodataItems"> </app-geodata-table>
+      </div>
+    </div>
+
+    <div
+      #bubleChartRow
+      class="geodata-container-chart mx-auto my-1"
+      [ngStyle]="geodataContainerStyles">
+      <div class="header-container">
+        <h1 class="p-1" [ngStyle]="userHeaderStyles">GEO-LOCATION HEAT MAP</h1>
+
+        <button
+          mat-raised-button
+          [color]="expandButtonColor"
+          (mouseover)="expandButtonColor = 'primary'"
+          (mouseout)="expandButtonColor = 'basic'"
+          (click)="onOpenGeoDataWindow()">
+          <mat-icon class="material-icons"> launch </mat-icon>
+        </button>
+      </div>
+
+      <app-geodata-bublechart
+        [deviceFilterArray]="deviceFilterArray"
+        [geodataItems]="geodataItems">
+      </app-geodata-bublechart>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="showLineChart" style="margin-top: 1rem">
+    <div
+      class="geodata-container-chart mx-auto my-1"
+      [ngStyle]="geodataContainerStyles">
+      <h1 class="p-1" [ngStyle]="userHeaderStyles">GEO-LOCATION LINE CHART</h1>
+      <app-geodata-linechart
+        [deviceFilterArray]="deviceFilterArray"
+        [geodataItems]="geodataItems">
+      </app-geodata-linechart>
+    </div>
+  </div>
+
+  <div class="row" style="margin-top: 3rem">
+    <app-event-filter (stateEvent)="onChangeStateEventHandler($event)">
+    </app-event-filter>
+  </div>
+
+  <div class="row">
+    <div
+      class="event-container-table mx-auto my-1"
+      [ngStyle]="geodataContainerStyles">
+      <h1 class="p-1" [ngStyle]="userHeaderStyles">EVENT TABLE</h1>
+      <app-event-table
+        [eventstate]="eventstateFilterName"
+        [eventdataItems]="eventdataItems"
+        (closeEvent)="onCloseEventHandler($event)"
+        (archiveEvent)="onArchiveEventHandler($event)">
+      </app-event-table>
+    </div>
+
+    <div
+      #barChartRow
+      class="geodata-container-chart mx-auto my-1"
+      [ngStyle]="geodataContainerStyles">
+      <div class="header-container">
+        <h1 class="p-1" [ngStyle]="userHeaderStyles">EVENT BAR CHART</h1>
+        <button
+          mat-raised-button
+          [color]="expandButtonColor"
+          (mouseover)="expandButtonColor = 'primary'"
+          (mouseout)="expandButtonColor = 'basic'"
+          (click)="onOpenEventWindow()">
+          <mat-icon class="material-icons"> launch </mat-icon>
+        </button>
+      </div>
+      <app-event-barchart
+        [eventState]="eventstateFilterName"
+        [deviceFilterArray]="deviceFilterArray"
+        [eventdataItems]="eventdataItems">
+      </app-event-barchart>
+    </div>
+  </div>
+
+  <div class="row" style="margin-top: 5rem"></div>
+</div>

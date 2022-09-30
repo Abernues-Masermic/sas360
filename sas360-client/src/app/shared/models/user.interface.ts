@@ -1,9 +1,16 @@
-export type Roles = null | 'OPERATOR' | 'ADMIN';
+import { Installation } from '@shared/models/installation.interface';
+
+export enum RoleType {
+  OPERATOR,
+  ADMIN,
+  SUPERADMIN,
+}
 
 export interface User {
   username: string;
   password: string;
-  role: Roles;
+  role: RoleType;
+  sRole: string;
   installation: string;
 }
 
@@ -12,5 +19,6 @@ export interface UserResponse {
   token: string;
   refreshToken: string;
   userId: number;
-  role: Roles;
+  role: RoleType;
+  installation: Installation;
 }

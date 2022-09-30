@@ -1,19 +1,19 @@
 @import 'variables';
 
 .footer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
-  height: 60px;
+  height: 70px;
   background: linear-gradient(90deg, rgb(0, 0, 0) 15%, rgba(47, 47, 48, 0.782) 52%, rgb(68, 68, 68) 100%);
   color: $white;
-  text-align: center;
 
   .content{
     font-family: $app-font-family;
     font-size: $app-font-size;
     margin-top: $app-margin-top;
     margin-bottom: $app-margin-bottom;
+    text-align: center;
 
     a{
       color: $white;

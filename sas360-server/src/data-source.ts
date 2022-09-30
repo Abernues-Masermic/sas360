@@ -1,6 +1,6 @@
 import "reflect-metadata";
 import { DataSource } from "typeorm";
-import { Data } from "./entity/Data";
+import { Geodata } from "./entity/Geodata";
 import { Device } from "./entity/Device";
 import { Event } from "./entity/Event";
 import { User } from "./entity/User";
@@ -15,7 +15,7 @@ export const AppDataSource = new DataSource({
     database: "sas360",
     synchronize: true,
     logging: false,
-    entities: [Data, Device, Event, User, Installation],
+    entities: [Geodata, Device, Event, User, Installation],
     migrations: [],
     subscribers: [],
 })

@@ -5,9 +5,11 @@ $nav-color:#1a223a;
 $black:#000;
 $white:#fff;
 $grey:rgb(94, 94, 94);
+$disabled:rgb(153, 153, 153);
 $red:rgb(255, 0, 0);
 $green:rgb(0, 255, 85);
-$dark-blue:rgb(0, 84, 163);
+$blue:rgb(0, 95, 184);
+$dark-blue:rgb(0, 50, 97);
 $button-color:rgb(235, 253, 255);
 $button-hover-color:rgb(0, 38, 73);
 
@@ -17,7 +19,9 @@ $horizontal-spacer:1 1 auto;
 $vertical-spacer:1px solid white;
 
 $app-font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-$app-font-size:1.2rem;
+$app-font-family-field: Roboto, "Helvetica Neue", sans-serif;;
+$app-font-size-small:0.9rem;
+$app-font-size:1.1rem;
 $app-font-size-title:1.5rem;
 $app-margin-top:0.5rem;
 $app-margin-bottom:0.5rem;
@@ -27,3 +31,4 @@ $app-padding-top:0.2rem;
 $app-padding-bottom:0.2rem;
 $app-padding-left:0.4rem;
 $app-padding-right:0.4rem;
+$app-letter-spacing:1px;

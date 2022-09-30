@@ -1,1 +1,126 @@
-<p>devices works!</p>
+<div class="table-button-row horizontal-spacer">
+  <button
+    (click)="onOpenModalDevice()"
+    mat-flat-button
+    color="primary"
+    class="m-3 p-1">
+    Add new
+  </button>
+
+  <h1 class="m-3 p-1">DEVICES</h1>
+</div>
+
+<table
+  mat-table
+  #table
+  [dataSource]="dataSource"
+  matSort
+  class="mat-elevation-z8">
+  <ng-container matColumnDef="id">
+    <th
+      mat-header-cell
+      *matHeaderCellDef
+      mat-sort-header
+      sortActionDescription="Sort by number">
+      No.
+    </th>
+    <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="devicename">
+    <th
+      mat-header-cell
+      *matHeaderCellDef
+      mat-sort-header
+      sortActionDescription="sort by devicename">
+      Device
+    </th>
+    <td mat-cell *matCellDef="let element">{{ element.devicename }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="sType">
+    <th
+      mat-header-cell
+      *matHeaderCellDef
+      mat-sort-header
+      sortActionDescription="sort by sType">
+      Type
+    </th>
+    <td mat-cell *matCellDef="let element">{{ element.sType }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="installation">
+    <th
+      mat-header-cell
+      *matHeaderCellDef
+      mat-sort-header
+      sortActionDescription="sort by installation">
+      Installation
+    </th>
+    <td mat-cell *matCellDef="let element">{{ element.installation }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="warningrange">
+    <th
+      mat-header-cell
+      *matHeaderCellDef
+      mat-sort-header
+      sortActionDescription="sort by warningrange">
+      Warning range
+    </th>
+    <td mat-cell *matCellDef="let element">{{ element.warningrange }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="cautionrange">
+    <th
+      mat-header-cell
+      *matHeaderCellDef
+      mat-sort-header
+      sortActionDescription="sort by cautionrange">
+      Caution range
+    </th>
+    <td mat-cell *matCellDef="let element">{{ element.cautionrange }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="alarmrange">
+    <th
+      mat-header-cell
+      *matHeaderCellDef
+      mat-sort-header
+      sortActionDescription="sort by alarmrange">
+      Alarm range
+    </th>
+    <td mat-cell *matCellDef="let element">{{ element.alarmrange }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
+    <td mat-cell *matCellDef="let element; let i = index">
+      <div class="table-button-row">
+        <a
+          class="custom-button-class"
+          (mouseover)="hoveredEdit = i"
+          (mouseout)="hoveredEdit = -1"
+          [ngStyle]="{
+            'background-color': hoveredEdit === i ? 'blue' : 'lightBlue'
+          }"
+          (click)="onOpenModalDevice(element)">
+          Edit
+        </a>
+        <a
+          class="custom-button-class"
+          (mouseover)="hoveredDelete = i"
+          (mouseout)="hoveredDelete = -1"
+          [ngStyle]="{
+            'background-color': hoveredDelete === i ? 'red' : 'coral'
+          }"
+          (click)="onDelete(element)">
+          Delete
+        </a>
+      </div>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>

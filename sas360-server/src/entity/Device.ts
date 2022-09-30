@@ -2,6 +2,7 @@ import { Contains, IsNotEmpty, Max, Min, MinLength,  IsIn } from 'class-validato
 import { Entity, PrimaryGeneratedColumn, Column, Unique } from "typeorm";
 import * as EnumTypes from "./EnumTypes";
 import { LowerThan } from '../middlewares/validator-utils';
+import { DecimalTransformer } from '../middlewares/transformer';
 
 @Entity()
 @Unique(['devicename'])
@@ -12,21 +13,20 @@ export class Device {
 
     @Column()
     @IsNotEmpty()
-    @MinLength(8)
+    @MinLength(5)
     @Contains("SAS")
     devicename: string
 
-    @Column()
+    @Column({ name: 'warningrange', type: 'decimal', precision: 2, scale: 1, default: 0.0, transformer: new DecimalTransformer() })
     @Min(2)
     @Max(10)
-    @IsNotEmpty()
     warningrange: number
 
-    @Column()
+    @Column({ name: 'cautionrange', type: 'decimal', precision: 2, scale: 1, default: 0.0, transformer: new DecimalTransformer() })
     @LowerThan('warningrange')
     cautionrange: number
 
-    @Column()
+    @Column({ name: 'alarmrange', type: 'decimal', precision: 2, scale: 1, default: 0.0, transformer: new DecimalTransformer() })
     @LowerThan('cautionrange')
     alarmrange: number
 

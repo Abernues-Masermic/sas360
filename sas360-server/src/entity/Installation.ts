@@ -10,7 +10,7 @@ export class Installation {
 
     @Column()
     @MinLength(5)
-    @IsNotEmpty()
+    @IsNotEmpty({message:'Please enter something from installation name'})
     installationname: string
 
     @Column()

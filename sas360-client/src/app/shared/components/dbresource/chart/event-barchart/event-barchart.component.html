@@ -1,0 +1,27 @@
+<div class="chartcontainer">
+  <div *ngIf="loaded" class="chartwrapper" #chartwrapper>
+    <div class="statecontainer">
+      <span>STATE: </span>
+      <div style="margin-left: 10px">{{ eventState }}</div>
+    </div>
+
+    <ngx-charts-bar-vertical-2d
+      [view]="[chartwrapper.offsetWidth, chartwrapper.offsetWidth / 2 + 50]"
+      [results]="barchartdata"
+      [customColors]="customColors"
+      [gradient]="gradient"
+      [xAxis]="showXAxis"
+      [yAxis]="showYAxis"
+      [legend]="showLegend"
+      [showXAxisLabel]="showXAxisLabel"
+      [showYAxisLabel]="showYAxisLabel"
+      [yAxisTickFormatting]="withoutDecimals"
+      [xAxisLabel]="xAxisLabel"
+      [yAxisLabel]="yAxisLabel"
+      [legendTitle]="legendTitle"
+      (select)="onSelect($event)"
+      (activate)="onActivate($event)"
+      (deactivate)="onDeactivate($event)">
+    </ngx-charts-bar-vertical-2d>
+  </div>
+</div>

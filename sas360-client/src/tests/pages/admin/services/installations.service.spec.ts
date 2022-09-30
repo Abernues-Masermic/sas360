@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { InstallationsService } from '../../../../app/pages/admin/services/installations.service';
+import { InstallationsService } from '../../../../app/pages/admin/services/installation.service';
 
 describe('InstallationsService', () => {
   let service: InstallationsService;

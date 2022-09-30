@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import auth from './auth';
-import data from './data';
+import data from './geodata';
 import device from './device';
 import event from './event';
 import installation from './installation';

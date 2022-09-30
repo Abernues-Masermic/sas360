@@ -1,9 +1,12 @@
 import { UserResponse, User } from '@shared/models/user.interface';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { environment } from '@env/environment';
+import { saveLocalUser, getLocalUser } from '@shared/utils/local-storage';
 
 const helper = new JwtHelperService();
 
@@ -32,19 +35,18 @@ export class AuthService {
     return this.tokenExpired.getValue();
   }
 
-  login(user: User): Observable<UserResponse> {
-    const userresponse: UserResponse = {
-      message: 'Logged',
-      token: '1234',
-      refreshToken: '1234',
-      userId: 1,
-      role: 'ADMIN',
-    };
-    this.saveLocalStorage(userresponse);
-    this.user.next(userresponse);
-    this.tokenExpired.next(false);
-
-    return of(userresponse);
+  login(authData: User): Observable<UserResponse> {
+    return this.http
+      .post<UserResponse>(`${environment.API_URL}/auth/login`, authData)
+      .pipe(
+        map((userresponse: UserResponse) => {
+          saveLocalUser(userresponse, authData.username);
+          this.user.next(userresponse);
+          this.tokenExpired.next(false);
+          return userresponse;
+        }),
+        catchError(err => this.handlerError(err))
+      );
   }
 
   logout(): void {
@@ -54,21 +56,33 @@ export class AuthService {
   }
 
   private checkToken(): void {
-    const item = localStorage.getItem('user');
-    if (item) {
-      const user = JSON.parse(item) || null;
-      if (user) {
-        const isExpired = false;
-        //const isExpired = helper.isTokenExpired(user.token);
-        const tokenUser = isExpired ? null : user;
-        this.user.next(tokenUser);
-        this.tokenExpired.next(isExpired);
+    let user = getLocalUser();
+    if (user) {
+      const isExpired = helper.isTokenExpired(user.token);
+      if (isExpired) {
+        console.log('Check auth token -> Token expired');
+        this.router.navigate(['/login']);
+      } else {
+        console.log('Check auth token -> OK');
+        this.user.next(user);
       }
+
+      this.tokenExpired.next(isExpired);
     }
   }
 
-  private saveLocalStorage(user: UserResponse): void {
-    const { userId, message, ...rest } = user;
-    localStorage.setItem('user', JSON.stringify(rest));
+  private handlerError(error: any): Observable<never> {
+    let errorMessage = '';
+    if (error) {
+      errorMessage = `Error ${error.message}`;
+      if (Array.isArray(error.error)) {
+        error.error.forEach(function (value: any) {
+          console.log(value.constraints);
+        });
+      } else {
+        console.log('Auth handle error', error.error);
+      }
+    }
+    return throwError(() => new Error(errorMessage));
   }
 }

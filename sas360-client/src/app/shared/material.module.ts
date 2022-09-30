@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatOptionModule } from '@angular/material/core';
@@ -25,6 +26,7 @@ const myModules: any = [
   MatCardModule,
   MatFormFieldModule,
   MatTableModule,
+  MatPaginatorModule,
   MatSortModule,
   MatDialogModule,
   MatOptionModule,
@@ -34,6 +36,5 @@ const myModules: any = [
 @NgModule({
   imports: [...myModules],
   exports: [...myModules],
-  declarations: [],
 })
 export class MaterialModule {}

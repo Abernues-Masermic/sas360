@@ -1,0 +1,115 @@
+<h2 mat-dialog-title>{{ data?.title }}</h2>
+
+<mat-dialog-content>
+  <div class="modal-form">
+    <form [formGroup]="baseFormDevice.baseForm">
+      <mat-form-field class="full-width-input">
+        <input
+          formControlName="devicename"
+          matInput
+          placeholder="Name"
+          required />
+        <mat-error *ngIf="!isValidModalField('devicename')">
+          {{ baseFormDevice.errorMessage }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width-input">
+        <mat-label>Type</mat-label>
+        <mat-select formControlName="type">
+          <mat-option
+            *ngFor="let devicetype of deviceTypes; let i = index"
+            [value]="i"
+            >{{ devicetype }}</mat-option
+          >
+        </mat-select>
+        <mat-error *ngIf="!isValidModalField('role')">
+          {{ baseFormDevice.errorMessage }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width-input">
+        <mat-label>Installation</mat-label>
+        <mat-select formControlName="installation">
+          <mat-option *ngFor="let inst of arrayInstallation" [value]="inst">{{
+            inst
+          }}</mat-option>
+        </mat-select>
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="onOpenModalInstallation()"
+          *ngIf="this.userRole === 'SUPERADMIN'">
+          <mat-icon> add </mat-icon>
+        </button>
+        <mat-error *ngIf="!isValidModalField('installation')">
+          {{ baseFormDevice.errorMessage }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="warning-class">
+        <input
+          (change)="onHandleWarningChange($event.target)"
+          matInput
+          type="number"
+          min="2"
+          max="10"
+          step="0.1"
+          formControlName="warningrange"
+          placeholder="Warning range"
+          required />
+        <mat-error *ngIf="!isValidModalField('warningrange')">
+          {{ baseFormDevice.errorMessage }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="caution-class">
+        <input
+          (change)="onHandleCautionChange($event.target)"
+          matInput
+          type="number"
+          min="0"
+          max="10"
+          step="0.1"
+          formControlName="cautionrange"
+          placeholder="Caution range"
+          required />
+        <mat-error *ngIf="!isValidModalField('cautionrange')">
+          {{ baseFormDevice.errorMessage }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="alarm-class">
+        <input
+          (change)="onHandleAlarmChange($event.target)"
+          matInput
+          type="number"
+          min="0"
+          max="10"
+          step="0.1"
+          formControlName="alarmrange"
+          placeholder="Alarm range"
+          required />
+        <mat-error *ngIf="!isValidModalField('alarmrange')">
+          {{ baseFormDevice.errorMessage }}
+        </mat-error>
+      </mat-form-field>
+    </form>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close (click)="utilsSvc.editingMode(false)">
+    Cancel
+  </button>
+
+  <button
+    mat-raised-button
+    [mat-dialog-close]="true"
+    color="primary"
+    (click)="onSaveDevice()"
+    ckdFocusInitial
+    [disabled]="!baseFormDevice.baseForm.valid">
+    Save
+  </button>
+</mat-dialog-actions>

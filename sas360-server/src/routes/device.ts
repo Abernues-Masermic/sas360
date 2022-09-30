@@ -1,17 +1,19 @@
 import { Router } from 'express';
 import DeviceController from '../controller/DeviceController';
+import { ENTITY_TYPE } from '../entity/EnumTypes';
+import { checkJwt } from '../middlewares/jwt';
 
 const router = Router()
 
 
-router.get('/', DeviceController.getAll);
+router.get('/', checkJwt(ENTITY_TYPE.DEVICE), DeviceController.getAll);
 
-router.get('/:id', DeviceController.getById);
+router.get('/:id', checkJwt(ENTITY_TYPE.DEVICE), DeviceController.getById);
 
-router.post('/', DeviceController.newDevice);
+router.post('/', checkJwt(ENTITY_TYPE.DEVICE), DeviceController.newDevice);
 
-router.patch('/:id', DeviceController.editDevice);
+router.patch('/:id', checkJwt(ENTITY_TYPE.DEVICE), DeviceController.editDevice);
 
-router.delete('/:id', DeviceController.deleteDevice);
+router.delete('/:id', checkJwt(ENTITY_TYPE.DEVICE), DeviceController.deleteDevice);
 
 export default router;

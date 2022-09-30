@@ -1,0 +1,36 @@
+@import 'variables';
+@import 'styles';
+
+
+.chartcontainer{
+  display: flex;
+  flex-direction: column;
+  row-gap: 160px;
+}
+
+.chartwrapper {
+  width: 98%;
+  height: 350px;
+  margin-top: 10px;
+}
+
+.chartvaluecontainer {
+  width: 98%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+}
+
+
+span{
+  @extend %description-label;
+}
+
+.chartvaluebox {
+  @extend %chartvalue-box;
+}
+
+
+

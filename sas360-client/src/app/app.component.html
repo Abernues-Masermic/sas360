@@ -1,14 +1,15 @@
 <app-spinner></app-spinner>
 <mat-sidenav-container>
-  <mat-sidenav #sidenav mode="side" [(opened)]="opened">
+  <mat-sidenav #sidenav mode="side" [(opened)]="openned">
     <mat-toolbar color="primary">ADMIN</mat-toolbar>
     <app-sidebar></app-sidebar>
   </mat-sidenav>
 
   <mat-sidenav-content>
     <app-header (toogleSidenav)="sidenav.toggle()"></app-header>
-    <router-outlet></router-outlet>
+    <div [@routeAnimations]="getRouteAnimationData()">
+      <router-outlet></router-outlet>
+    </div>
     <app-footer></app-footer>
   </mat-sidenav-content>
 </mat-sidenav-container>
-<hr />

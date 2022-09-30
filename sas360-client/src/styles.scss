@@ -13,24 +13,243 @@ input{
   font-size: 100%;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: $app-font-family;
+}
+
+table{
+  width:98%;
+  margin: 0 auto;
+  margin-top: 0.4rem;
+  overflow: auto;
+  border-collapse:separate;
+  border-radius:10px;
+  font-family: $app-font-family;
+  font-size: $app-font-size;
+}
+
+
+th {
+  background-color: rgb(0, 80, 146);
+  color: white !important;
+
+  &.mat-header-cell {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+}
+th:first-of-type {
+  border-top-left-radius: 10px;
+}
+th:last-of-type {
+  border-top-right-radius: 10px;
+}
+tr:last-of-type td:first-of-type {
+  border-bottom-left-radius: 10px;
+}
+tr:last-of-type td:last-of-type {
+  border-bottom-right-radius: 10px;
+}
+th .mat-sort-header-arrow {
+  color: white !important;
+}
+
+
+.mat-select{
+  height: 20px!important;
+  padding-left: 0.2rem;
+  font-family: $app-font-family;
+  font-size: $app-font-size;
+  letter-spacing: $app-letter-spacing;
+}
 
 
 .mat-button.mat-primary .mat-button-focus-overlay {
   background-color: red;
 }
 
-.overlay{
-  position: fixed;
-  width:100%;
-  height: 100%;
-  background-color: rgba(74, 74, 74, .8);
-  z-index:10;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.mat-form-field{
+  background-color: white;
+  border-radius: 0.2rem;
+  font-size:  $app-font-size-small;
+
+  .mat-form-field-label {
+    margin-left: 0.2em;
+    margin-top: 0.1em;
+    font-family: $app-font-family-field;
+  }
+
+  span.mat-form-field-label-wrapper label {
+    color:$blue !important;
+    font-family: $app-font-family-field;
+    font-size:  $app-font-size-small;
+  }
+
+  &.mat-focused span.mat-form-field-label-wrapper label{
+    color:$dark-blue !important;
+    font-family: $app-font-family-field;
+    font-size:  $app-font-size-small;
+  }
 }
+
+.mat-option{
+  font-family: $app-font-family;
+  font-size: $app-font-size-small;
+  margin: 0.2rem;
+
+  &:hover:not(.mat-option-disabled){
+    background: $black;
+    color: $white;
+  }
+
+  &.mat-active {
+    color: $dark-blue !important;
+
+    &:hover:not(.mat-option-disabled){
+      background: $black;
+      color: $white !important;
+    }
+  }
+}
+
+.mat-paginator {
+  font-family: $app-font-family !important;
+  font-size: $app-font-size-small !important;
+  border-collapse:separate;
+  border-radius:0px 0px 10px 10px;
+  color: white;
+  background-color: black;
+
+
+  .mat-paginator-page-size-select {
+    margin-left: 15px;
+    margin-bottom: 5px;
+    background-color: black;
+  }
+  .mat-form-field-ripple {
+    background-color: #027D7C !important;
+  }
+
+  .mat-select-value {
+    color:white;
+    font-size: 0.9rem;
+    padding-left: 5px;
+  }
+
+  .mat-select-arrow {
+    border-top: 5px solid white;
+  }
+
+  .mat-form-field-appearance-legacy .mat-form-field-underline {
+    background-color:  white;
+  }
+  .mat-option{
+    padding: 0!important;
+  }
+  .mat-paginator-container {
+      justify-content: right;
+  }
+  .mat-paginator-range-label {
+    color: white;
+    order: 2;
+  }
+  .mat-paginator-navigation-previous {
+    color: white;
+    order: 1;
+  }
+  .mat-paginator-navigation-next {
+    order: 3;
+    color: white;
+  }
+
+  .mat-paginator-navigation-previous:disabled,
+  .mat-paginator-navigation-next:disabled  {
+    color: rgb(187, 158, 105);
+  }
+}
+
+
+.mat-radio-group{
+  padding: 1rem;
+  background-color: black;
+}
+.mat-radio-button{
+  color:white;
+  font-family: $app-font-family;
+  font-size: $app-font-size;
+}
+.mat-radio-outer-circle{
+  border-radius: 4px!important;
+  background-color: white!important;
+}
+.mat-radio-inner-circle{
+  border-radius: 2px!important;
+  background-color: transparent!important;
+  border-bottom: 5px solid white!important;
+  border-right: 5px solid white!important;
+  height: 30px!important;
+  width: 15px!important;
+  margin-top: -8px!important;
+  margin-left: 3px!important;
+}
+.mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
+	background-color: $blue!important;
+}
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+	border-color: $blue!important; /*outer ring color change*/
+}
+.mat-radio-checked .mat-radio-outer-circle{
+   background: $blue!important;
+}
+.mat-radio-checked .mat-radio-inner-circle{
+   transform: rotate(45deg) scale(0.5)!important;
+}
+.mat-radio-button .mat-radio-ripple{
+  height: 20px!important; /*double of your required circle radius*/
+  width: 20px!important;  /*double of your required circle radius*/
+  left: calc(50% - 10px)!important; /*'10px'-same as your required circle radius*/
+  top: calc(50% - 10px)!important; /*'10px'-same as your required circle radius */
+}
+
+input {
+  text-align: center!important;
+  font-family: $app-font-family;
+  font-size: $app-font-size;
+  letter-spacing: $app-letter-spacing;
+}
+
+input[type="number"] {
+  height: 32px;
+  border-radius: 4px;
+  border: 1px solid #d8d8d8;
+  position: relative;
+  text-align: center;
+  font-size: 20px;
+  width: 100%;
+  outline: none;
+  background-image: url('data:image/svg+xml;utf8,%3Csvg%20version%3D%221.1%22%20viewBox%3D%220%200%2050%2067%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%20stroke-width%3D%222%22%3E%3Cline%20x1%3D%221%22%20x2%3D%2250%22%20y1%3D%2233.5%22%20y2%3D%2233.5%22%20stroke%3D%22%23D8D8D8%22%2F%3E%3Cpolyline%20transform%3D%22translate(25%2020)%20rotate(45)%20translate(-25%20-20)%22%20points%3D%2219%2026%2019%2014%2032%2014%22%20stroke%3D%22%23000%22%2F%3E%3Cpolyline%20transform%3D%22translate(25%2045)%20rotate(225)%20translate(-25%20-45)%22%20points%3D%2219%2052%2019%2039%2032%2039%22%20stroke%3D%22%23000%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E');
+  background-position: center right;
+  background-size: contain;
+  background-repeat: no-repeat;
+  caret-color: transparent;
+}
+
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none !important;
+  opacity: 1 !important;
+  background: transparent !important;
+  border-width: 0px;
+  margin: 0;
+  border-left: 1px solid #d8d8d8;
+  height: 34px;
+  width: 23px;
+  cursor: pointer;
+}
+
 
 
 

@@ -1,0 +1,91 @@
+<h2 mat-dialog-title>{{ data?.title }}</h2>
+
+<mat-dialog-content>
+  <div class="modal-form">
+    <form [formGroup]="baseFormUser.baseForm">
+      <mat-form-field class="full-width-input">
+        <input
+          formControlName="username"
+          matInput
+          placeholder="Name"
+          required />
+        <mat-error *ngIf="!isValidModalField('username')">
+          {{ baseFormUser.errorMessage }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width-input" *ngIf="showPasswordField">
+        <input
+          [type]="hidepasswordbutton ? 'password' : 'text'"
+          formControlName="password"
+          matInput
+          placeholder="Passsword"
+          required />
+
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hidepasswordbutton = !hidepasswordbutton">
+          <mat-icon>
+            {{ hidepasswordbutton ? 'visibility_off' : 'visibility' }}
+          </mat-icon>
+        </button>
+
+        <mat-error *ngIf="!isValidModalField('password')">
+          {{ baseFormUser.errorMessage }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width-input">
+        <mat-label>Type</mat-label>
+        <mat-select
+          formControlName="role"
+          (selectionChange)="onSelectRole($event.value)">
+          <mat-option
+            *ngFor="let roletype of roleTypes; let i = index"
+            [value]="i">
+            {{ roletype }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="!isValidModalField('role')">
+          {{ baseFormUser.errorMessage }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width-input" *ngIf="showInstallation">
+        <mat-label>Installation</mat-label>
+        <mat-select formControlName="installation">
+          <mat-option *ngFor="let inst of arrayInstallation" [value]="inst">{{
+            inst
+          }}</mat-option>
+        </mat-select>
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="onOpenModalInstallation()"
+          *ngIf="this.userRole === 'SUPERADMIN'">
+          <mat-icon> add </mat-icon>
+        </button>
+        <mat-error *ngIf="!isValidModalField('installation')">
+          {{ baseFormUser.errorMessage }}
+        </mat-error>
+      </mat-form-field>
+    </form>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close (click)="utilsSvc.editingMode(false)">
+    Cancel
+  </button>
+
+  <button
+    mat-raised-button
+    [mat-dialog-close]="true"
+    color="primary"
+    (click)="onSaveUser()"
+    ckdFocusInitial
+    [disabled]="!baseFormUser.baseForm.valid">
+    Save
+  </button>
+</mat-dialog-actions>

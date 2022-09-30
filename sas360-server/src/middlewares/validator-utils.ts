@@ -1,5 +1,6 @@
 import { registerDecorator, ValidationArguments, ValidationOptions, ValidatorConstraint, ValidatorConstraintInterface } from 'class-validator';
 
+
 export function buildEnumBundle<V extends string | number = string>(
     nameValueMap: { [k: string]: V },
 ) {
@@ -56,16 +57,13 @@ export function Match(property: string, validationOptions?: ValidationOptions) {
         });
     };
 }
-
 @ValidatorConstraint({name: 'Match'})
 export class MatchConstraint implements ValidatorConstraintInterface {
-
     validate(value: any, args: ValidationArguments) {
         const [relatedPropertyName] = args.constraints;
         const relatedValue = (args.object as any)[relatedPropertyName];
         return value === relatedValue;
     }
-
 }
 
 
@@ -80,7 +78,6 @@ export function LowerThan(property: string, validationOptions?: ValidationOption
         });
     };
 }
-
 @ValidatorConstraint({name: 'LowerThan'})
 export class LowerThanConstraint implements ValidatorConstraintInterface {
 

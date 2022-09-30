@@ -6,9 +6,12 @@ import {
   Output,
   EventEmitter,
 } from '@angular/core';
-import { Router } from '@angular/router';
 import { Subject, Subscription, takeUntil } from 'rxjs';
-import { UserResponse } from '@app/shared/models/user.interface';
+import { RoleType, UserResponse } from '@shared/models/user.interface';
+import {
+  getLocalInstallation,
+  getLocalUser,
+} from '@shared/utils/local-storage';
 
 @Component({
   selector: 'app-header',
@@ -16,7 +19,10 @@ import { UserResponse } from '@app/shared/models/user.interface';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-  userRole?: string | null;
+  imageSrc: string = 'assets/images/SASicon2.png';
+  imageAlt = 'SAS360';
+  userInstallation?: string | null;
+  userRole?: RoleType | null;
   userName?: string | null;
   isLogged = false;
 
@@ -25,15 +31,19 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   @Output() toogleSidenav = new EventEmitter<void>();
 
-  constructor(private authSvc: AuthService, private router: Router) {}
+  constructor(private authSvc: AuthService) {}
 
   ngOnInit(): void {
     this.authSvc.user$
       .pipe(takeUntil(this.destroy$))
       .subscribe((userresponse: UserResponse | null) => {
         this.isLogged = userresponse != null;
-        this.userRole = this.isLogged ? userresponse?.role : null;
-        this.userName = this.isLogged ? 'abernues@masermic.com' : '';
+        const user = getLocalUser();
+        console.log('Header user ->', user);
+
+        this.userRole = user && this.isLogged ? user.role : null;
+        this.userName = user && this.isLogged ? user.username : '';
+        this.userInstallation = getLocalInstallation();
       });
   }
 
@@ -49,5 +59,15 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   onLogout(): void {
     this.authSvc.logout();
+    this.userRole = null;
+    this.userName = '';
+  }
+
+  public get roleType(): typeof RoleType {
+    return RoleType;
+  }
+
+  public get sRole(): string {
+    return this.userRole != null ? RoleType[this.userRole] : '';
   }
 }

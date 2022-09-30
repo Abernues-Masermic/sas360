@@ -2,7 +2,10 @@ import { AuthService } from '@pagesauth/auth.service';
 import { Subject, Subscription } from 'rxjs';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from '@shared/models/user.interface';
+import { ToastrService } from 'ngx-toastr';
+import { BaseFormUser } from '@app/shared/baseform/base-form-user';
+import { GlobalConstants } from '@shared/utils/global-constants';
+import { saveLocalUser } from '@shared/utils/local-storage';
 
 @Component({
   selector: 'app-login',
@@ -10,14 +13,23 @@ import { User } from '@shared/models/user.interface';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit, OnDestroy {
-  public hide: boolean = true;
+  public hidePassword: boolean = true;
+  public isExpired: boolean = false;
   private subscriptions: Subscription = new Subscription();
   private destroy$ = new Subject<boolean>();
 
-  constructor(private authSvc: AuthService, private router: Router) {}
+  constructor(
+    private authSvc: AuthService,
+    private router: Router,
+    public baseFormUser: BaseFormUser,
+    private toastSrv: ToastrService
+  ) {}
 
   ngOnInit(): void {
-    this.hide = true;
+    this.baseFormUser.baseForm.get('role')?.setValidators(null);
+    this.baseFormUser.baseForm.get('installation')?.setValidators(null);
+    this.baseFormUser.baseForm.updateValueAndValidity();
+    this.patchFormData();
   }
 
   ngOnDestroy(): void {
@@ -25,22 +37,33 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   onLogin(): void {
-    const user: User = {
-      username: 'abernues@masermic.com',
-      password: '12345678',
-      role: 'ADMIN',
-      installation: 'MASERMIC',
-    };
-
-    console.log('onLogin request ->', user);
-
+    if (this.baseFormUser.baseForm.invalid) {
+      return;
+    }
+    const formValue = this.baseFormUser.baseForm.value;
     this.subscriptions.add(
-      this.authSvc.login(user).subscribe(res => {
-        if (res) {
-          console.log('onLogin response ->', res);
+      this.authSvc?.login(formValue).subscribe({
+        next: res => {
+          console.log('onLogin', res);
           this.router.navigate(['']);
-        }
+        },
+        error: error =>
+          this.toastSrv.error(error, 'SAS360 message', {
+            timeOut: GlobalConstants.toastTimeout,
+          }),
+        complete: () => console.info('onLogin completed'),
       })
     );
+  }
+
+  checkField(field: string): boolean | undefined {
+    return this.baseFormUser.isValidField(field);
+  }
+
+  private patchFormData(): void {
+    this.baseFormUser.baseForm.patchValue({
+      username: '',
+      password: '',
+    });
   }
 }

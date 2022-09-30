@@ -1,0 +1,36 @@
+<div class="chartcontainer">
+  <div class="chartwrapper" #chartwrapper>
+    <ngx-charts-line-chart
+      [view]="[chartwrapper.offsetWidth, chartwrapper.offsetWidth / 2]"
+      [results]="linechartdata"
+      [customColors]="customColors"
+      [legend]="legend"
+      [showXAxisLabel]="showXAxisLabel"
+      [showYAxisLabel]="showYAxisLabel"
+      [xAxis]="xAxis"
+      [yAxis]="yAxis"
+      [xAxisLabel]="xAxisLabel"
+      [yAxisLabel]="yAxisLabel"
+      [yScaleMin]="yScaleMin"
+      [yScaleMax]="yScaleMax"
+      [xScaleMin]="xScaleMin"
+      [xScaleMax]="xScaleMax"
+      [timeline]="timeline"
+      (select)="onSelect($event)"
+      (activate)="onActivate($event)"
+      (deactivate)="onDeactivate($event)">
+    </ngx-charts-line-chart>
+  </div>
+
+  <div class="chartvaluecontainer border border-secondary rounded">
+    <span>Device</span>
+    <div class="chartvaluebox">{{ selectedName }}</div>
+
+    <span style="margin-left: 10px">X</span>
+    <div class="chartvaluebox">{{ selectedX }}</div>
+
+    <span style="margin-left: 10px">Y</span>
+    <div class="chartvaluebox">{{ selectedY }}</div>
+
+  </div>
+</div>

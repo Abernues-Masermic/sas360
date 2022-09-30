@@ -1,0 +1,39 @@
+<div class="chartcontainer">
+  <div class="chartwrapper" #chartwrapper>
+    <ngx-charts-bubble-chart
+      [results]="bublechartdata"
+      [view]="[chartwrapper.offsetWidth, chartwrapper.offsetWidth / 2]"
+      [customColors]="customColors"
+      [xAxis]="showXAxis"
+      [yAxis]="showYAxis"
+      [legend]="showLegend"
+      [showXAxisLabel]="showXAxisLabel"
+      [showYAxisLabel]="showYAxisLabel"
+      [xAxisLabel]="xAxisLabel"
+      [yAxisLabel]="yAxisLabel"
+      [yScaleMin]="yScaleMin"
+      [yScaleMax]="yScaleMax"
+      [xScaleMin]="xScaleMin"
+      [xScaleMax]="xScaleMax"
+      [minRadius]="minRadius"
+      [maxRadius]="maxRadius"
+      (select)="onSelect($event)"
+      (activate)="onActivate($event)"
+      (deactivate)="onDeactivate($event)">
+    </ngx-charts-bubble-chart>
+
+    <div class="chartvaluecontainer border border-secondary rounded">
+      <span>Device</span>
+      <div class="chartvaluebox">{{ selectedName }}</div>
+
+      <span style="margin-left: 5px">X</span>
+      <div class="chartvaluebox">{{ selectedX }}</div>
+
+      <span style="margin-left: 5px">Y</span>
+      <div class="chartvaluebox">{{ selectedY }}</div>
+
+      <span style="margin-left: 5px">Frec. index</span>
+      <div class="chartvaluebox">{{ frecIndex | number: '1.1-2' }}</div>
+    </div>
+  </div>
+</div>

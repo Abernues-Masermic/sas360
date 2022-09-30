@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ModalInstallationComponent } from '../../../../app/pages/admin/components/modal-installation/modal-installation.component';
+import { ModalInstallationComponent } from '../../../../app/pages/admin/modal-components/modal-installation/modal-installation.component';
 
 describe('ModalInstallationComponent', () => {
   let component: ModalInstallationComponent;

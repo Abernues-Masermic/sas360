@@ -10,6 +10,7 @@
       "@pages/*": ["src/app/pages/*"],
       "@pagesauth/*": ["src/app/pages/auth/*"],
       "@pagesadmin/*": ["src/app/pages/admin/*"],
+      "@dbresource/*": ["src/app/shared/components/dbresource/*"],
       "@env/*": ["src/environments/*"],
     },
     "outDir": "./dist/out-tsc",

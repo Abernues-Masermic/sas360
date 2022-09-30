@@ -1,12 +1,13 @@
 import { FindOptionsSelect } from 'typeorm';
 import { Request, Response } from "express";
-import { AppDataSource } from "../data-source";
 import { validate } from 'class-validator';
+import { AppDataSource } from "../data-source";
 import { Device } from "../entity/Device";
 
 class DeviceController {
 
     static getAll = async (req:Request, res:Response) => {
+        console.log("GET ALL DEVICES"); 
         const deviceRepository = AppDataSource.getRepository(Device);
         let devices: Device[];
         try{
@@ -23,6 +24,7 @@ class DeviceController {
     }
 
     static getById = async (req:Request, res:Response) => {
+        console.log("GET DEVICES BY ID ->",req.params); 
         const { id } = req.params;
         const deviceRepository = AppDataSource.getRepository(Device);
         try{
@@ -37,14 +39,15 @@ class DeviceController {
     }
 
     static newDevice = async (req:Request, res:Response) => {
+        console.log("NEW DEVICE -> ", req.body); 
         const  { devicename, warningrange, cautionrange, alarmrange, type, installation } = req.body;
         const device = new Device();
         device.devicename = devicename;
+        device.type = type;
+        device.installation = installation;
         device.warningrange = warningrange;
         device.cautionrange = cautionrange;
         device.alarmrange = alarmrange;
-        device.type = type;
-        device.installation = installation;
 
         //Validate
         const validationOpt = {validationError: {target:false, value:false} }
@@ -60,13 +63,14 @@ class DeviceController {
             return res.status(409).json({message:'device already exist!'})
         }
 
-        res.status(200).json({devicename, type, installation});
+        res.status(200).json({devicename, type, installation, warningrange, cautionrange, alarmrange});
     }
 
     static editDevice = async (req:Request, res:Response) => {
+        console.log("EDIT DEVICE -> ", req.params, req.body); 
         let device: Device;
         const { id } = req.params;
-        const { warningrange, cautionrange, alarmrange, type, installation} = req.body;
+        const { devicename, warningrange, cautionrange, alarmrange, type, installation} = req.body;
 
         const deviceRepository = AppDataSource.getRepository(Device);
         try{
@@ -75,6 +79,7 @@ class DeviceController {
                     id: Number(id),
                 }
             });
+            device.devicename = devicename;
             device.warningrange = warningrange;
             device.cautionrange = cautionrange;
             device.alarmrange = alarmrange;
@@ -101,6 +106,7 @@ class DeviceController {
     }
 
     static deleteDevice = async (req:Request, res:Response) => {
+        console.log("DELETE DEVICE -> ", req.params); 
         const { id } = req.params;
         const deviceRepository = AppDataSource.getRepository(Device);
         let device: Device;

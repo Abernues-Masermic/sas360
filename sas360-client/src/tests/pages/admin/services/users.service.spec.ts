@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { UsersService } from '@pagesadmin/services/users.service';
+import { UsersService } from '@app/pages/admin/services/user.service';
 import {
   HttpClientTestingModule,
   HttpTestingController,

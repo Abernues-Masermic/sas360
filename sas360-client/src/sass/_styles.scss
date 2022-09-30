@@ -2,15 +2,15 @@
   color: $white;
   background-color: black;
   width: 100%;
+  margin: 0 auto;
   font-family: $app-font-family;
   font-weight: bold;
   text-align: center;
-  border-bottom:2px solid $dark-blue;
+  border-bottom:2px solid $black;
   border-bottom-style: solid;
-  border-right:2px solid $dark-blue;
+  border-right:2px solid $black;
   border-right-style: solid;
 }
-
 
 %custom-button{
   display:inline-block;
@@ -20,7 +20,6 @@
   padding-right: $app-padding-right;
   margin-top: $app-margin-top;
   margin-bottom: $app-margin-bottom;
-  margin-left: $app-margin-left;
   margin-right: $app-margin-right;
   border-radius:$border-radious-content;
   box-sizing: border-box;
@@ -50,3 +49,41 @@
     }
   }
 }
+
+%description-label{
+  background-color: $black;
+  color: $white;
+  font-family:$app-font-family;
+  font-size: $app-font-size;
+  height: 23px;
+  padding-left: 0.2rem;
+  padding-right: 0.4rem;
+  margin-right: 0.2rem;
+  border-style: solid;
+  border-color: $black;
+  border-top-width: 1px;
+  border-right-width: 2px;
+  border-bottom-width: 2px;
+  border-left-width: 1px;
+  border-radius: 0.2rem;
+}
+
+%chartvalue-box {
+  margin-right: $app-margin-right;
+  width: 90px;
+  height: 23px;
+  padding-left: 0.2rem;
+  padding-right: 0.2rem;
+  font-family: $app-font-family;
+  font-size: $app-font-size-small;
+  letter-spacing: $app-letter-spacing;
+
+  border-style: solid;
+  border-color: $black;
+  border-top-width: 1px;
+  border-right-width: 2px;
+  border-bottom-width: 2px;
+  border-left-width: 1px;
+  border-radius: 0.2rem;
+}
+

@@ -1,0 +1,33 @@
+@import 'variables';
+@import 'styles';
+
+.chartcontainer{
+  display: flex;
+  flex-direction: column;
+  row-gap: 160px;
+}
+
+.statecontainer{
+  height: 2rem;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem;
+  background-color: black;
+  font-family: $app-font-family;
+  font-size: $app-font-size;
+  color:white;
+  border: 8px double $black;
+  border-radius: 8px 8px 8px 8px;
+
+
+}
+
+.chartwrapper {
+  width: 98%;
+  height: 350px;
+  margin-top: 0px;
+}

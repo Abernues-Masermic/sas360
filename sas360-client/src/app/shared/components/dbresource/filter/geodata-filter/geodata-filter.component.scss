@@ -1,0 +1,53 @@
+@import 'variables';
+@import 'styles';
+
+.containerFilter{
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  text-align: center;
+  margin: 0 auto;
+  font-family: $app-font-family;
+  font-size: 1rem;
+  letter-spacing: $app-letter-spacing;
+  background-color: black;
+  width: 98.5%;
+  height: 70px;
+  border: 7px double $white;
+  border-radius: 12px 12px 12px 12px;
+}
+
+.filterTitle{
+  color: black;
+  background-color: white;
+  min-width: 200px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: -webkit-flex;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.filterFields {
+  height: 70px !important;
+  margin: 0.2rem;
+  flex: 1 1 auto;
+  display: inline-flex;
+  flex-direction: row;
+}
+
+.device-form-field{
+  height: 50px;
+  min-width: 210px;
+  margin-right: 5%;
+}
+
+.date-form-field{
+  height: 50px;
+  min-width: 220px;
+  max-width: 250px;
+  margin-right: 10px;
+}
+

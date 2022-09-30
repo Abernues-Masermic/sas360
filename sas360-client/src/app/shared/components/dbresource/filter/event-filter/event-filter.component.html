@@ -1,0 +1,38 @@
+<button
+  mat-icon-button
+  matSuffix
+  class="mx-2"
+  (click)="showFilterEvent = !showFilterEvent">
+  <mat-icon>
+    {{ showFilterControl ? 'visibility_off' : 'visibility' }}
+  </mat-icon>
+</button>
+
+<div
+  class="container-filter"
+  [style.display]="showFilterControl ? 'flex' : 'none'"
+  [@fadeInOut]="showFilterEvent ? 'open' : 'close'"
+  (@fadeInOut.start)="onAnimationStart($event)"
+  (@fadeInOut.done)="onAnimationDone($event)">
+  <div class="stateTitle">STATE</div>
+
+  <mat-radio-group
+    aria-label="Select an option"
+    [ngStyle]="{
+      flex: '1 1 auto',
+      display: 'inline-flex',
+      'flex-direction': 'row',
+      'margin-left': '5%'
+    }"
+    [(ngModel)]="eventStateSelected"
+    (ngModelChange)="onStateKeyChange()">
+    <mat-radio-button
+      *ngFor="let state of EventStateList"
+      [ngStyle]="{ flex: '1 1 auto' }"
+      [value]="state.name"
+      [checked]="state.checked"
+      class="mx-4"
+      >{{ state.name }}
+    </mat-radio-button>
+  </mat-radio-group>
+</div>

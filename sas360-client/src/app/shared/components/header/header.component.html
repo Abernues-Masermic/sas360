@@ -1,17 +1,34 @@
 <mat-toolbar color="primary">
-  <ng-container *ngIf="userRole === 'ADMIN'">
+  <ng-container
+    *ngIf="userRole === roleType.ADMIN || userRole === roleType.SUPERADMIN">
     <button mat-icon-button (click)="onToogleSideNav()">
       <mat-icon>menu</mat-icon>
     </button>
   </ng-container>
 
-  <span>SAS360</span>
+  <div id="header">
+    <img
+      src="{{ imageSrc }}"
+      style="cursor: pointer"
+      alt="{{ imageAlt }}"
+      [routerLink]="['/']" />
+  </div>
+
   <span class="horizontal-spacer"></span>
 
-  <h3>{{ userName }}</h3>
-  <a *ngIf="!isLogged; else viewLogout">
-    <a class="custom-button-class" routerLink="/login">Login</a>
-  </a>
+  <div id="installationHeader" *ngIf="userInstallation">
+    <div class="installationclass">INSTALLATION - {{ userInstallation }}</div>
+  </div>
+
+  <div id="userHeader" *ngIf="userName">
+    <div>
+      <div class="nameclass">{{ userName }}</div>
+      <div class="roleclass">{{ sRole }}</div>
+    </div>
+    <a *ngIf="!isLogged; else viewLogout">
+      <a class="custom-button-class" routerLink="/login">Login</a>
+    </a>
+  </div>
 </mat-toolbar>
 
 <ng-template #viewLogout>

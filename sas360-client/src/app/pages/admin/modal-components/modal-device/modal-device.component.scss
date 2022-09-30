@@ -1,0 +1,55 @@
+@import 'variables';
+
+.modal-form{
+  padding:0.5rem 0;
+
+  .full-width-input{
+    width: 100%;
+  }
+}
+
+h2{
+  font-family: $app-font-family;
+  font-size: $app-font-size-title;
+}
+
+.caution-class, 
+.alarm-class{
+  margin-left: 1rem;
+}
+
+::ng-deep .warning-class .mat-focused .mat-form-field-label {
+  color: yellow !important;
+ }
+
+ ::ng-deep .warning-class .mat-form-field-underline {
+  background-color: yellow !important;
+}
+
+::ng-deep .warning-class .mat-form-field-ripple {
+  background-color: yellow !important;
+}
+
+::ng-deep .caution-class .mat-focused .mat-form-field-label {
+  color: orange !important;
+ }
+
+ ::ng-deep .caution-class .mat-form-field-underline {
+  background-color: orange !important;
+}
+
+::ng-deep .caution-class .mat-form-field-ripple {
+  background-color: orange !important;
+}
+
+::ng-deep .alarm-class .mat-focused .mat-form-field-label {
+  color: red !important;
+ }
+
+ ::ng-deep .alarm-class .mat-form-field-underline {
+  background-color: red !important;
+}
+
+::ng-deep .alarm-class .mat-form-field-ripple {
+  background-color: red !important;
+}

@@ -1,0 +1,76 @@
+<button
+  mat-icon-button
+  matSuffix
+  class="mx-2"
+  (click)="showFilterEvent = !showFilterEvent">
+  <mat-icon>
+    {{ showFilterControl ? 'visibility_off' : 'visibility' }}
+  </mat-icon>
+</button>
+
+<div
+  class="containerFilter"
+  [style.display]="showFilterControl ? 'flex' : 'none'"
+  [@fadeInOut]="showFilterEvent ? 'open' : 'close'"
+  (@fadeInOut.start)="onAnimationStart($event)"
+  (@fadeInOut.done)="onAnimationDone($event)">
+  <div class="filterTitle">DATA FILTER</div>
+
+  <div class="filterFields">
+    <mat-form-field class="form-field device-form-field">
+      <mat-select
+        disableOptionCentering
+        panelClass="my-select-panel-class"
+        placeholder="Device filter..."
+        panelClass="panel-white-mat-select"
+        (selectionChange)="onChangeDevice($event)"
+        [(value)]="deviceFilter">
+        <mat-option *ngFor="let device of deviceFilterArray" [value]="device">
+          {{ device }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div [formGroup]="formGroup" class="form-field">
+      <mat-form-field class="date-form-field">
+        <input
+          matInput
+          (ngModelChange)="onChangeDateTimeIni($event)"
+          [ngxMatDatetimePicker]="datetimeinipicker"
+          placeholder="Choose ini date "
+          formControlName="dateIni" />
+        <mat-datepicker-toggle matSuffix [for]="$any(datetimeinipicker)">
+        </mat-datepicker-toggle>
+        <ngx-mat-datetime-picker
+          #datetimeinipicker
+          [showSpinners]="showSpinners"
+          [showSeconds]="showSeconds"
+          [stepHour]="stepHour"
+          [stepMinute]="stepMinute"
+          [stepSecond]="stepSecond"
+          [touchUi]="touchUi">
+        </ngx-mat-datetime-picker>
+      </mat-form-field>
+
+      <mat-form-field class="date-form-field">
+        <input
+          matInput
+          (ngModelChange)="onChangeDateTimeEnd($event)"
+          [ngxMatDatetimePicker]="datetimeendpicker"
+          placeholder="Choose end date "
+          formControlName="dateEnd" />
+        <mat-datepicker-toggle matSuffix [for]="$any(datetimeendpicker)">
+        </mat-datepicker-toggle>
+        <ngx-mat-datetime-picker
+          #datetimeendpicker
+          [showSpinners]="showSpinners"
+          [showSeconds]="showSeconds"
+          [stepHour]="stepHour"
+          [stepMinute]="stepMinute"
+          [stepSecond]="stepSecond"
+          [touchUi]="touchUi">
+        </ngx-mat-datetime-picker>
+      </mat-form-field>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, Unique } from "typeorm";
-import { MinLength, IsNotEmpty, IsEmail, IsOptional } from "class-validator";
+import { MinLength, IsNotEmpty, IsEmail, IsOptional, IsIn } from "class-validator";
+import * as EnumTypes from "./EnumTypes";
 
 @Entity()
 @Unique(['username'])
@@ -11,7 +12,7 @@ export class User {
     @Column()
     @MinLength(6)
     @IsEmail()
-    @IsNotEmpty()
+    @IsNotEmpty({message:'Please enter something from user name'})
     username: string
 
     @Column()
@@ -20,11 +21,10 @@ export class User {
     password: string
 
     @Column()
-    @IsNotEmpty()
-    role: string
+    @IsIn(EnumTypes.ROLE_TYPE._.values)
+    role: number
 
-    @Column()
-    @IsNotEmpty()
+    @Column({ name: 'installation', nullable: true, type: 'varchar' })
     installation: string
 
     @Column()

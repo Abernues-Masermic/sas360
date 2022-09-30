@@ -1,0 +1,29 @@
+@import 'variables';
+@import 'styles';
+
+.container-filter {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  text-align: center;
+  margin: 0 auto;
+  font-family: $app-font-family;
+  font-size: 1rem;
+  letter-spacing: $app-letter-spacing;
+  background-color: black;
+  width: 98.5%;
+  border: 7px double $white;
+  border-radius: 12px 12px 12px 12px;
+}
+
+.stateTitle{
+  color: black;
+  background-color: white;
+  min-width: 200px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: -webkit-flex;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -2,7 +2,14 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-not-found',
-  templateUrl: './not-found.component.html',
+  template: `
+    <div id="container">
+      <img src="{{ imageSrc }}" style="cursor: pointer" alt="{{ imageAlt }}" />
+    </div>
+  `,
   styleUrls: ['./not-found.component.scss'],
 })
-export class NotFoundComponent {}
+export class NotFoundComponent {
+  imageAlt: string = '404 Not found';
+  imageSrc: string = 'assets/images/pagenotfound.png';
+}

@@ -14,7 +14,7 @@ export class CheckLoginGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    console.log('Can activate ->', this.authSvc.userValue);
+    console.log('CheckLoginGuard (Can activate) ->', this.authSvc.userValue);
     if (!this.authSvc.userValue) {
       return this.router.navigate(['/login']).then(() => false);
     }

@@ -1,11 +1,11 @@
 import * as bcrypt from 'bcryptjs';
 
-export function hashPassword(password:string): string {
+export function hashPassword(password: string): string {
     let hashPassword:string = '';
     try{
         const salt = bcrypt.genSaltSync(10);
         hashPassword = bcrypt.hashSync(password, salt);
-        console.log("hashPasssword ->",  this.password);
+        console.log("hashPasssword ->",  hashPassword);
     }
     catch(error){
         console.log("Error hashPasssword ->", error);

@@ -1,26 +1,32 @@
 <div class="vertical-spacer"></div>
 <mat-nav-list>
-  <a mat-list-item routerLink="/admin">
+  <a mat-list-item routerLink="/admin" [disabled]="disabled">
     <mat-icon class="white-icon">insert_chart_outlined</mat-icon>
     <span class="nav-link">Dashboard</span>
   </a>
 
-  <a mat-list-item routerLink="/admin/users">
-    <mat-icon class="white-icon">people</mat-icon>
-    <span class="nav-link">Users</span>
-  </a>
-
-  <a mat-list-item routerLink="/admin/installations">
+  <a
+    mat-list-item
+    routerLink="/admin/installations"
+    [disabled]="disabled || userRole !== roleType.SUPERADMIN">
     <mat-icon class="white-icon">settings_overscan</mat-icon>
     <span class="nav-link">Installations</span>
   </a>
 
-  <a mat-list-item routerLink="/admin/devices">
+  <a
+    mat-list-item
+    routerLink="/admin/users"
+    [disabled]="disabled || userRole !== roleType.SUPERADMIN">
+    <mat-icon class="white-icon">people</mat-icon>
+    <span class="nav-link">Users</span>
+  </a>
+
+  <a mat-list-item routerLink="/admin/devices" [disabled]="disabled">
     <mat-icon class="white-icon">settings_input_antenna</mat-icon>
     <span class="nav-link">Devices</span>
   </a>
 
-  <a mat-list-item routerLink="/admin/events">
+  <a mat-list-item routerLink="/admin/events" [disabled]="disabled">
     <mat-icon class="white-icon">event</mat-icon>
     <span class="nav-link">Events</span>
   </a>
